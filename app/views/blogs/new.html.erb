@@ -1,0 +1,29 @@
+<div class="row section">
+  <div class="col s8 offset-s2">
+    <div class="card hoverable">
+      <div class="card-content">
+        <div class="card-title center">記事を投稿する</div>
+        <%= form_with(url: blogs_path, local: true) do |form| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= form.text_field :title %>
+              <label for="title">タイトル</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= form.text_area :text, id: "textarea" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light btn-large orange darken-1" type="submit" name="action">投稿</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,18 @@
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card light-green lighten-4">
+        <div class="card-content black-text">
+          <span class="card-title">
+            <%= blog.title %>
+          </span>
+          <p><%= blog.text %></p>
+        </div>
+        <% if user_signed_in? && current_user.id == blog.user.id %>
+          <div class="card-action">
+            <%= link_to "編集", "/blogs/#{blog.id}/edit", method: :GET %>
+            <%= link_to "削除", "/blogs/#{blog.id}", method: :DELETE %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

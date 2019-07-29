@@ -1,0 +1,27 @@
+<div class="row section">
+  <div class="col s8 offset-s2">
+    <div class="card hoverable">
+      <div class="card-content">
+        <div class="card-title center">記事を編集する</div>
+        <%= form_with(url: "/blogs/#{@blog.id}", method: :PATCH, local: true) do |form| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= form.text_field :title, :value => @blog.title %>
+              <label for="autocomplete-input">タイトル</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= form.text_area :text, id: "textarea", :value => @blog.text %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light btn-large orange darken-1" type="submit" name="action">更新</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

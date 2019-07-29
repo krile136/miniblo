@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Miniblo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- iconを追加する-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src=
+    "https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+    </script>
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav class="amber lighten-4">
+        <div class="nav-wrapper">
+          <div class="left_space"><%= link_to "Miniblo", root_path, class: "brand-logo black-text" %></div>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if user_signed_in? %>
+              <li><%= link_to "投稿する", new_blog_path, class: "black-text" %>
+              <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "black-text" %>
+            <% else %>
+              <li><%= link_to "ログイン", new_user_session_path, class: "black-text" %>
+              <li><%= link_to "新規登録", new_user_registration_path, class: "black-text" %>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <%= yield %>
+  </body>
+</html>
