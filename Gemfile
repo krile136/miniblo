@@ -71,3 +71,5 @@ gem 'jquery-rails'
 gem 'materialize-sass'
 gem 'material_icons'
 gem "devise_materialize", "~>1.2.0"
+gem 'simple_form'
+gem "wysiwyg-rails"
