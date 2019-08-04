@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 " id="froala_field">
               <%= form.text_area :text, id: "textarea", :value => @blog.text %>
             </div>
           </div>
@@ -25,3 +25,19 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function(){
+  $("#froala_field").empty();
+  
+  var froala_text_area = `<textarea id='textarea' name='text' style='disolay: none;'><%= @blog.text %></textarea>`
+  $("#froala_field").append(froala_text_area);
+
+  var editor = new FroalaEditor('#textarea', {toolbarInline: false,
+    toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
+    toolbarButtonsXS: ['undo', 'redo' , '-', 'bold', 'italic', 'underline'],
+    heightMin: 200,
+    heightMax: 300
+  })
+});
+</script>

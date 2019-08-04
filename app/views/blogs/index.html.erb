@@ -1,9 +1,18 @@
 <div class="spacer"></div>
-<% @blogs.each do |blog| %>
-  <%= render partial: "blog", locals: { blog: blog } %>
+<% @blogs.each_with_index do |blog, i| %>
+  <%= render partial: "blog", locals: { blog: blog , i: i} %>
 <% end %>
 <div class="paginate_center">
   <%= paginate(@blogs) %>
 </div>
-  
  
+<script>
+  for( var i=0; i<5; i++){
+    var blog_num = "#blog_num" +i
+    var text_html = $(blog_num).data("text");
+    // 一旦追加された子要素を全て削除する
+    $(blog_num).empty();
+    // 改めてHTMLを追加する
+    $(blog_num).append(text_html);
+  };
+</script>

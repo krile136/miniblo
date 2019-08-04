@@ -13,8 +13,12 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Blog.create(title: blog_params[:title], text: blog_params[:text], user_id: current_user.id)
-    # redirect_to root_path
+    blog = Blog.new(title: blog_params[:title], text: blog_params[:text], user_id: current_user.id)
+    if blog.save
+      
+    else
+
+    end
   end
 
   def edit

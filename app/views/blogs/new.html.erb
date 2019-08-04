@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12" id="froala_field">
               <%= form.text_area :text, id: "textarea" %>
             </div>
           </div>
@@ -26,11 +26,26 @@
   </div>
 </div>
 
+
 <script>
-  new FroalaEditor('#textarea', {toolbarInline: false,
+$(document).on('turbolinks:load', function(){
+  // 一度テキストフィールドを削除しないと、戻る/進むをした時にフィールドが２重に生成されてしまう
+
+  // froalaのテキストフィールド以下を一度削除する
+  $("#froala_field").empty();
+
+  // froalaを生成するためのtextareaを再度追加する
+  // 実際のfroalaのテキストフィールドはこのタグより上に生成されている
+  // なので、この一段階上のid=froala_fieldにもう一度textareaをくっつける
+  var froala_text_area = "<textarea id='textarea' name='text' style='disolay: none;'></textarea>"
+  $("#froala_field").append(froala_text_area);
+
+  // 再度くっつけたtextareaにfroalaを当てる
+  var editor = new FroalaEditor('#textarea', {toolbarInline: false,
     toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
     toolbarButtonsXS: ['undo', 'redo' , '-', 'bold', 'italic', 'underline'],
     heightMin: 200,
     heightMax: 300
   })
+});
 </script>
